@@ -179,7 +179,7 @@
     <!--  x500 model -->
     <include>
       <uri>
-        file:///home/uni_co/ros2_ws/src/drone_in_warehouse/models/x500/model.sdf
+        model://x500
       </uri>
       <name>x500</name>
       <pose>0 -20.0 0.25 0 0 1.5707963</pose>
@@ -188,7 +188,7 @@
     <!-- ArUco Markers -->
     <include>
       <uri>
-        file:///home/uni_co/ros2_ws/src/drone_in_warehouse/models/ArUcoMarkers/ArUcoMarker_0.sdf
+        model://ArUcoMarkers/ArUcoMarker_0.sdf
       </uri>
       <name>ArUcoMarker_0</name>
       <pose>-0.2 -19.8 0.011 0 0 1.5708</pose>
@@ -196,7 +196,7 @@
 
     <include>
       <uri>
-        file:///home/uni_co/ros2_ws/src/drone_in_warehouse/models/ArUcoMarkers/ArUcoMarker_1.sdf
+        model://ArUcoMarkers/ArUcoMarker_1.sdf
       </uri>
       <name>ArUcoMarker_1</name>
       <pose>0.2 -19.8 0.011 0 0 1.5708</pose>
@@ -204,7 +204,7 @@
 
     <include>
       <uri>
-        file:///home/uni_co/ros2_ws/src/drone_in_warehouse/models/ArUcoMarkers/ArUcoMarker_2.sdf
+        model://ArUcoMarkers/ArUcoMarker_2.sdf
       </uri>
       <name>ArUcoMarker_2</name>
       <pose>-0.2 -20.2 0.011 0 0 1.5708</pose>
@@ -212,7 +212,7 @@
 
     <include>
       <uri>
-        file:///home/uni_co/ros2_ws/src/drone_in_warehouse/models/ArUcoMarkers/ArUcoMarker_3.sdf
+        model://ArUcoMarkers/ArUcoMarker_3.sdf
       </uri>
       <name>ArUcoMarker_3</name>
       <pose>0.2 -20.2 0.011 0 0 1.5708</pose>
@@ -220,7 +220,7 @@
     
     <include>
       <uri>
-        file:///home/uni_co/ros2_ws/src/drone_in_warehouse/models/ArUcoMarkers/ArUcoMarker_base.sdf
+        model://ArUcoMarkers/ArUcoMarker_base.sdf
       </uri>
       <name>ArUcoMarker_base</name>
       <pose>0 -20.0 0.01 0 0 0</pose>
@@ -228,7 +228,7 @@
 
     <include>
       <uri>
-        file:///home/uni_co/ros2_ws/src/drone_in_warehouse/models/ArUcoMarkers/ArUcoMarker_inner.sdf
+        model://ArUcoMarkers/ArUcoMarker_inner.sdf
       </uri>
       <name>ArUcoMarker_inner</name>
       <pose>0 -20.0 0.02 0 0 0</pose>
