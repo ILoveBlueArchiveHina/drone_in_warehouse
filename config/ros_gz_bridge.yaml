@@ -1,0 +1,92 @@
+# 這個配置文件用於 ROS 2 與 Gazebo 之間的橋接
+# 定義 ROS 傳給 Gazebo 或 Gazebo 傳給 ROS 使用什麼 Topic 名稱及類型
+---
+# 速度控制 ROS --> Gazebo
+- ros_topic_name: "/cmd_vel"
+  gz_topic_name: "/x500/cmd_vel"
+  ros_type_name: "geometry_msgs/msg/Twist"
+  gz_type_name: "ignition.msgs.Twist"
+  direction: ROS_TO_GZ
+
+# 模擬時間 Gazebo --> ROS
+- ros_topic_name: "/clock"
+  gz_topic_name: "/clock"
+  ros_type_name: "rosgraph_msgs/msg/Clock"
+  gz_type_name: "ignition.msgs.Clock"
+  direction: GZ_TO_ROS
+
+# # 里程計數據 Gazebo --> ROS
+- ros_topic_name: "/Odometry"
+  gz_topic_name: "/model/x500/odometry"
+  ros_type_name: "nav_msgs/msg/Odometry"
+  gz_type_name: "ignition.msgs.Odometry"
+  direction: GZ_TO_ROS
+
+# GPS數據 Gazebo --> ROS
+# - ros_topic_name: "/gps/fix"
+#   gz_topic_name: "/gps"
+#   ros_type_name: "sensor_msgs/msg/NavSatFix"
+#   gz_type_name: "ignition.msgs.NavSat"
+#   direction: GZ_TO_ROS
+
+# # IMU 數據 Gazebo --> ROS
+# - ros_topic_name: "/imu/data"
+#   gz_topic_name: "/imu"
+#   ros_type_name: "sensor_msgs/msg/Imu"
+#   gz_type_name: "ignition.msgs.IMU"
+#   direction: GZ_TO_ROS
+
+# 動態座標轉換 Gazebo --> ROS
+- ros_topic_name: "/tf"
+  gz_topic_name: "/x500/tf"
+  ros_type_name: "tf2_msgs/msg/TFMessage"
+  gz_type_name: "ignition.msgs.Pose_V"
+  direction: GZ_TO_ROS
+  ros:
+    frame_id: "base_link"
+
+# 3D 光達數據 Gazebo --> ROS
+- ros_topic_name: "/cloud_registered_body"
+  gz_topic_name: "/lidar/points"
+  ros_type_name: "sensor_msgs/msg/PointCloud2"
+  gz_type_name: "ignition.msgs.PointCloudPacked"
+  direction: GZ_TO_ROS
+
+# 降落相機影像 Gazebo --> ROS
+- ros_topic_name: "webcam/image_raw"
+  gz_topic_name: "/landing_cam"
+  ros_type_name: "sensor_msgs/msg/Image"
+  gz_type_name: "ignition.msgs.Image"
+  direction: GZ_TO_ROS
+  # ros:
+  #   frame_id: "camera_link"
+
+# 降落相機規格資訊
+- ros_topic_name: "webcam/camera_info"
+  gz_topic_name: "landing_cam/info"
+  ros_type_name: "sensor_msgs/msg/CameraInfo"
+  gz_type_name: "ignition.msgs.CameraInfo"
+  direction: GZ_TO_ROS
+  # ros:
+  #   frame_id: "camera_link"
+
+# 無人機正面拍攝相機畫面
+- ros_topic_name: "/zed/zed_node/rgb/color/rect/image"
+  gz_topic_name: "/zed2i"
+  ros_type_name: "sensor_msgs/msg/Image"
+  gz_type_name: "ignition.msgs.Image"
+  direction: GZ_TO_ROS
+
+# 無人機正面拍攝相機資訊
+- ros_topic_name: "/zed/zed_node/rgb/color/rect/camera_info"
+  gz_topic_name: "zed2i/info"
+  ros_type_name: "sensor_msgs/msg/CameraInfo"
+  gz_type_name: "ignition.msgs.CameraInfo"
+  direction: GZ_TO_ROS
+    
+# 高度計數據 Gazebo --> ROS
+# - ros_topic_name: "/altimeter"
+#   gz_topic_name: "/altimeter"
+#   ros_type_name: "ros_gz_interfaces/msg/Altimeter"
+#   gz_type_name: "ignition.msgs.Altimeter"
+#   direction: GZ_TO_ROS

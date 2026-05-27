@@ -1,0 +1,9 @@
+mavros_node:
+  ros__parameters:
+    fcu_url: "udp://:14550@"
+    gcs_url: "udp://:14555@"
+    tgt_system: 1
+    tgt_component: 1
+    fcu_protocol: "v2.0"
+    system_id: 1
+    component_id: 240

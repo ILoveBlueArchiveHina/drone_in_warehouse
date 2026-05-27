@@ -1,0 +1,245 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="crazyflie">
+  <!-- 定義常數參數 -->
+  <xacro:property name="body_mass" value="0.025"/>
+  <xacro:property name="prop_mass" value="0.0008"/>
+  <xacro:property name="body_size_x" value="0.10"/>
+  <xacro:property name="body_size_y" value="0.10"/>
+  <xacro:property name="body_size_z" value="0.03485"/>
+  <xacro:property name="prop_distance" value="0.031"/>
+  <xacro:property name="body_height" value="0.017425"/>
+  
+  <!-- 主機身連結 -->
+  <link name="crazyflie/base_footprint">
+    <!-- 慣性屬性 -->
+    <inertial>
+      <mass value="${body_mass}"/>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <inertia ixx="16.571710E-06" ixy="0.830806E-06" ixz="0.718277E-06"
+               iyy="16.655602E-06" iyz="1.800197E-06" izz="29.261652E-06"/>
+    </inertial>
+    
+    <!-- 碰撞幾何 -->
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <box size="${body_size_x} ${body_size_y} ${body_size_z}"/>
+      </geometry>
+    </collision>
+    
+    <!-- 視覺幾何 -->
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="package://drone_in_warehouse/models/crazyflie/meshes/cf2_assembly.dae" scale="1 1 1"/>
+      </geometry>
+      <material name="crazyflie_material">
+        <color rgba="0.2 0.2 0.2 1"/>
+      </material>
+    </visual>
+  </link>
+
+
+  <!-- 馬達1連結 (前右) -->
+  <link name="m1_prop">
+    <inertial>
+      <mass value="${prop_mass}"/>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <inertia ixx="8.33333E-09" ixy="0" ixz="0"
+               iyy="1.08333E-07" iyz="0" izz="1.13333E-07"/>
+    </inertial>
+    
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="package://drone_in_warehouse/models/crazyflie/meshes/ccw_prop.dae" scale="1 1 1"/>
+      </geometry>
+      <material name="prop_material">
+        <color rgba="0.8 0.8 0.8 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <cylinder radius="0.02" length="0.01"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <!-- 馬達2連結 (前左) -->
+  <link name="m2_prop">
+    <inertial>
+      <mass value="${prop_mass}"/>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <inertia ixx="8.33333E-09" ixy="0" ixz="0"
+               iyy="1.08333E-07" iyz="0" izz="1.13333E-07"/>
+    </inertial>
+    
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="package://drone_in_warehouse/models/crazyflie/meshes/cw_prop.dae" scale="1 1 1"/>
+      </geometry>
+      <material name="prop_material"/>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <cylinder radius="0.02" length="0.01"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <!-- 馬達3連結 (後左) -->
+  <link name="m3_prop">
+    <inertial>
+      <mass value="${prop_mass}"/>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <inertia ixx="8.33333E-09" ixy="0" ixz="0"
+               iyy="1.08333E-07" iyz="0" izz="1.13333E-07"/>
+    </inertial>
+    
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="package://drone_in_warehouse/models/crazyflie/meshes/ccw_prop.dae" scale="1 1 1"/>
+      </geometry>
+      <material name="prop_material"/>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <cylinder radius="0.02" length="0.01"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <!-- 馬達4連結 (後右) -->
+  <link name="m4_prop">
+    <inertial>
+      <mass value="${prop_mass}"/>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <inertia ixx="8.33333E-09" ixy="0" ixz="0"
+               iyy="1.08333E-07" iyz="0" izz="1.13333E-07"/>
+    </inertial>
+    
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="package://drone_in_warehouse/models/crazyflie/meshes/cw_prop.dae" scale="1 1 1"/>
+      </geometry>
+      <material name="prop_material"/>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <cylinder radius="0.02" length="0.01"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <!-- 馬達1關節 (前右) -->
+  <joint name="m1_joint" type="revolute">
+    <parent link="crazyflie/base_footprint"/>
+    <child link="m1_prop"/>
+    <origin xyz="${prop_distance} -${prop_distance} 0.021" rpy="0 0 0"/>
+    <axis xyz="0 0 1"/>
+    <limit lower="-1000" upper="1000" effort="100" velocity="100"/>
+    <dynamics damping="0.1" friction="0.1"/>
+  </joint>
+
+  <!-- 馬達2關節 (前左) -->
+  <joint name="m2_joint" type="revolute">
+    <parent link="crazyflie/base_footprint"/>
+    <child link="m2_prop"/>
+    <origin xyz="-${prop_distance} -${prop_distance} 0.021" rpy="0 0 0"/>
+    <axis xyz="0 0 1"/>
+    <limit lower="-1000" upper="1000" effort="100" velocity="100"/>
+    <dynamics damping="0.1" friction="0.1"/>
+  </joint>
+
+  <!-- 馬達3關節 (後左) -->
+  <joint name="m3_joint" type="revolute">
+    <parent link="crazyflie/base_footprint"/>
+    <child link="m3_prop"/>
+    <origin xyz="-${prop_distance} ${prop_distance} 0.021" rpy="0 0 0"/>
+    <axis xyz="0 0 1"/>
+    <limit lower="-1000" upper="1000" effort="100" velocity="100"/>
+    <dynamics damping="0.1" friction="0.1"/>
+  </joint>
+
+  <!-- 馬達4關節 (後右) -->
+  <joint name="m4_joint" type="revolute">
+    <parent link="crazyflie/base_footprint"/>
+    <child link="m4_prop"/>
+    <origin xyz="${prop_distance} ${prop_distance} 0.021" rpy="0 0 0"/>
+    <axis xyz="0 0 1"/>
+    <limit lower="-1000" upper="1000" effort="100" velocity="100"/>
+    <dynamics damping="0.1" friction="0.1"/>
+  </joint>
+
+  <!-- 多距離感測器連結 -->
+  <link name="crazyflie/base_footprint/multiranger">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <cylinder radius="0.01" length="0.02"/>
+      </geometry>
+      <material name="sensor_material">
+        <color rgba="0.1 0.1 0.8 0.5"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <cylinder radius="0.01" length="0.02"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <link name="crazyflie/base_footprint/imu">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <cylinder radius="0.01" length="0.02"/>
+      </geometry>
+      <material name="sensor_material">
+        <color rgba="0.1 0.1 0.8 0.5"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <cylinder radius="0.01" length="0.02"/>
+      </geometry>
+    </collision>
+  </link>
+
+    <!-- imu感測器關節 -->
+  <joint name="imu_joint" type="fixed">
+    <parent link="crazyflie/base_footprint"/>
+    <child link="crazyflie/base_footprint/imu"/>
+    <origin xyz="0 0 0.02" rpy="0 0 0"/>
+  </joint>
+
+  <!-- multiranger感測器關節 -->
+  <joint name="multiranger_joint" type="fixed">
+    <parent link="crazyflie/base_footprint"/>
+    <child link="crazyflie/base_footprint/multiranger"/>
+    <origin xyz="0 0 0.05" rpy="0 0 0"/>
+  </joint>
+
+  <!-- 定義材質 -->
+  <material name="crazyflie_material">
+    <color rgba="1 0 0 1"/>
+  </material>
+
+  <material name="prop_material">
+    <color rgba="0.3 0.8 0 1"/>
+  </material>
+
+  <material name="sensor_material">
+    <color rgba="0.1 0.1 0.8 1"/>
+  </material>
+
+</robot>

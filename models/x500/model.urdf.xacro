@@ -1,0 +1,297 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="x500">
+
+  <!-- Properties -->
+  <xacro:property name="base_mass" value="2.0"/>
+  <xacro:property name="rotor_mass" value="0.016076923076923075"/>
+  
+  <!-- Base footprint link -->
+  <link name="body">
+    <inertial>
+      <mass value="${base_mass}"/>
+      <inertia ixx="0.02166666666666667" ixy="0" ixz="0" 
+               iyy="0.02166666666666667" iyz="0" izz="0.04000000000000001"/>
+    </inertial>
+    
+    <visual>
+      <origin xyz="0 0 0.025" rpy="0 0 3.141592654"/>
+      <geometry>
+        <mesh filename="package://drone_in_warehouse/models/x500/meshes/NXP-HGD-CF.dae" scale="1 1 1"/>
+      </geometry>
+    </visual>
+    
+    <collision>
+      <origin xyz="0 0 0.007" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.35355339059327373 0.35355339059327373 0.05"/>
+      </geometry>
+    </collision>
+    
+    <collision>
+      <origin xyz="0 -0.098 -0.123" rpy="-0.35 0 0"/>
+      <geometry>
+        <box size="0.015 0.015 0.21"/>
+      </geometry>
+    </collision>
+    
+    <collision>
+      <origin xyz="0 0.098 -0.123" rpy="0.35 0 0"/>
+      <geometry>
+        <box size="0.015 0.015 0.21"/>
+      </geometry>
+    </collision>
+    
+    <collision>
+      <origin xyz="0 -0.132 -0.2195" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.25 0.015 0.015"/>
+      </geometry>
+    </collision>
+    
+    <collision>
+      <origin xyz="0 0.132 -0.2195" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.25 0.015 0.015"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <!-- Rotor 0 (CCW) -->
+  <link name="rotor_0">
+    <inertial>
+      <mass value="${rotor_mass}"/>
+      <inertia ixx="3.8464910483993325e-07" ixy="0" ixz="0" 
+               iyy="2.6115851691700804e-05" iyz="0" izz="2.649858234714004e-05"/>
+    </inertial>
+    
+    <visual>
+      <origin xyz="-0.022 -0.14638461538461536 -0.016" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="package://drone_in_warehouse/models/x500/meshes/1345_prop_ccw.stl" scale="0.8461538461538461 0.8461538461538461 0.8461538461538461"/>
+      </geometry>
+      <material name="DarkGrey"/>
+    </visual>
+    
+    <visual>
+      <origin xyz="0 0 -0.032" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="package://drone_in_warehouse/models/x500/meshes/5010Bell.dae" scale="1 1 1"/>
+      </geometry>
+    </visual>
+    
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.2792307692307692 0.016923076923076923 0.0008461538461538462"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <!-- Rotor 1 (CCW) -->
+  <link name="rotor_1">
+    <inertial>
+      <mass value="${rotor_mass}"/>
+      <inertia ixx="3.8464910483993325e-07" ixy="0" ixz="0" 
+               iyy="2.6115851691700804e-05" iyz="0" izz="2.649858234714004e-05"/>
+    </inertial>
+    
+    <visual>
+      <origin xyz="-0.022 -0.14638461538461536 -0.016" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="package://drone_in_warehouse/models/x500/meshes/1345_prop_ccw.stl" scale="0.8461538461538461 0.8461538461538461 0.8461538461538461"/>
+      </geometry>
+      <material name="DarkGrey"/>
+    </visual>
+    
+    <visual>
+      <origin xyz="0 0 -0.032" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="package://drone_in_warehouse/models/x500/meshes/5010Bell.dae" scale="1 1 1"/>
+      </geometry>
+    </visual>
+    
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.2792307692307692 0.016923076923076923 0.0008461538461538462"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <!-- Rotor 2 (CW) -->
+  <link name="rotor_2">
+    <inertial>
+      <mass value="${rotor_mass}"/>
+      <inertia ixx="3.8464910483993325e-07" ixy="0" ixz="0" 
+               iyy="2.6115851691700804e-05" iyz="0" izz="2.649858234714004e-05"/>
+    </inertial>
+    
+    <visual>
+      <origin xyz="-0.022 -0.14638461538461536 -0.016" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="package://drone_in_warehouse/models/x500/meshes/1345_prop_cw.stl" scale="0.8461538461538461 0.8461538461538461 0.8461538461538461"/>
+      </geometry>
+      <material name="DarkGrey"/>
+    </visual>
+    
+    <visual>
+      <origin xyz="0 0 -0.032" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="package://drone_in_warehouse/models/x500/meshes/5010Bell.dae" scale="1 1 1"/>
+      </geometry>
+    </visual>
+    
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.2792307692307692 0.016923076923076923 0.0008461538461538462"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <!-- Rotor 3 (CW) -->
+  <link name="rotor_3">
+    <inertial>
+      <mass value="${rotor_mass}"/>
+      <inertia ixx="3.8464910483993325e-07" ixy="0" ixz="0" 
+               iyy="2.6115851691700804e-05" iyz="0" izz="2.649858234714004e-05"/>
+    </inertial>
+    
+    <visual>
+      <origin xyz="-0.022 -0.14638461538461536 -0.016" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="package://drone_in_warehouse/models/x500/meshes/1345_prop_cw.stl" scale="0.8461538461538461 0.8461538461538461 0.8461538461538461"/>
+      </geometry>
+      <material name="DarkGrey"/>
+    </visual>
+    
+    <visual>
+      <origin xyz="0 0 -0.032" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="package://drone_in_warehouse/models/x500/meshes/5010Bell.dae" scale="1 1 1"/>
+      </geometry>
+    </visual>
+    
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.2792307692307692 0.016923076923076923 0.0008461538461538462"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <!-- Joints -->
+  <joint name="rotor_0_joint" type="continuous">
+    <parent link="body"/>
+    <child link="rotor_0"/>
+    <origin xyz="0.174 -0.174 0.06" rpy="0 0 0"/>
+    <axis xyz="0 0 1"/>
+    <limit lower="-1e+16" upper="1e+16" effort="100" velocity="1000"/>
+  </joint>
+
+  <joint name="rotor_1_joint" type="continuous">
+    <parent link="body"/>
+    <child link="rotor_1"/>
+    <origin xyz="-0.174 0.174 0.06" rpy="0 0 0"/>
+    <axis xyz="0 0 1"/>
+    <limit lower="-1e+16" upper="1e+16" effort="100" velocity="1000"/>
+  </joint>
+
+  <joint name="rotor_2_joint" type="continuous">
+    <parent link="body"/>
+    <child link="rotor_2"/>
+    <origin xyz="0.174 0.174 0.06" rpy="0 0 0"/>
+    <axis xyz="0 0 1"/>
+    <limit lower="-1e+16" upper="1e+16" effort="100" velocity="1000"/>
+  </joint>
+
+  <joint name="rotor_3_joint" type="continuous">
+    <parent link="body"/>
+    <child link="rotor_3"/>
+    <origin xyz="-0.174 -0.174 0.06" rpy="0 0 0"/>
+    <axis xyz="0 0 1"/>
+    <limit lower="-1e+16" upper="1e+16" effort="100" velocity="1000"/>
+  </joint>
+
+    <!-- 多距離感測器連結 -->
+  <link name="lidar">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <cylinder radius="0.01" length="0.02"/>
+      </geometry>
+      <material name="sensor_material">
+        <color rgba="0.0 0.4 0.8 0.9"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <cylinder radius="0.01" length="0.02"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <link name="imu">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <cylinder radius="0.01" length="0.01"/>
+      </geometry>
+      <material name="sensor_material">
+        <color rgba="0.8 0.8 0.8 1.0"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <cylinder radius="0.01" length="0.01"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <link name="camera">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <cylinder radius="0.01" length="0.01"/>
+      </geometry>
+      <material name="sensor_material">
+        <color rgba="0.0 0.4 0.8 0.9"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <cylinder radius="0.01" length="0.01"/>
+      </geometry>
+    </collision>
+  </link>
+
+    <!-- imu感測器關節 -->
+  <joint name="imu_joint" type="fixed">
+    <parent link="body"/>
+    <child link="imu"/>
+    <origin xyz="0 0 0.02" rpy="0 0 0"/>
+  </joint>
+
+  <!-- multiranger感測器關節 -->
+  <joint name="multiranger_joint" type="fixed">
+    <parent link="body"/>
+    <child link="lidar"/>
+    <origin xyz="0 0 0.1" rpy="0 0 0"/>
+  </joint>
+
+  <!-- camera關節 -->
+  <joint name="camera_joint" type="fixed">
+    <parent link="body"/>
+    <child link="camera"/>
+    <origin xyz="0 0 -0.05" rpy="0 1.5708 0"/>
+  </joint>
+
+  <!-- Materials -->
+  <material name="DarkGrey">
+    <color rgba="0.2 0.2 0.2 1"/>
+  </material>
+
+</robot>
