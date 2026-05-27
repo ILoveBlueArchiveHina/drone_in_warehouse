@@ -37,7 +37,7 @@ install (
 )
 
 # Install Python modules for import
-ament_python_install_package(${PROJECT_NAME})
+# ament_python_install_package(${PROJECT_NAME})
 
 # Add this section to install Python scripts
 install(
