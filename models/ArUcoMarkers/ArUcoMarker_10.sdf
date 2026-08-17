@@ -1,6 +1,6 @@
 <?xml version="1.0" ?>
 <sdf version="1.7">
-  <model name="ArUcoMarker_3">
+  <model name="ArUcoMarker_0">
     <static>true</static>
     <link name="link">
       <pose>0 0 0 0 0 0</pose>
@@ -15,7 +15,7 @@
         <material>
           <pbr>
             <metal>
-              <albedo_map>model://ArUcoMarkers/textures/Original_ArUco/aruco_3.png</albedo_map>
+              <albedo_map>model://ArUcoMarkers/textures/Original_ArUco/aruco-10.png</albedo_map>
               <metalness>0.0</metalness>
               <roughness>1.0</roughness>
             </metal>

@@ -71,14 +71,14 @@
   #   frame_id: "camera_link"
 
 # 無人機正面拍攝相機畫面
-- ros_topic_name: "/zed/zed_node/rgb/color/rect/image"
+- ros_topic_name: "/zed/zed_node/left/color/rect/image"
   gz_topic_name: "/zed2i"
   ros_type_name: "sensor_msgs/msg/Image"
   gz_type_name: "ignition.msgs.Image"
   direction: GZ_TO_ROS
 
 # 無人機正面拍攝相機資訊
-- ros_topic_name: "/zed/zed_node/rgb/color/rect/camera_info"
+- ros_topic_name: "/zed/zed_node/left/color/rect/camera_info"
   gz_topic_name: "zed2i/info"
   ros_type_name: "sensor_msgs/msg/CameraInfo"
   gz_type_name: "ignition.msgs.CameraInfo"

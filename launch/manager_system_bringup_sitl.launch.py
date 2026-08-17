@@ -7,9 +7,11 @@ from ament_index_python.packages import get_package_share_directory
 
 def generate_launch_description():
     diw_pkg = get_package_share_directory('drone_in_warehouse')
+    unico_pack = get_package_share_directory('unico_pack')
+
     mavros = IncludeLaunchDescription(
             PythonLaunchDescriptionSource(
-                os.path.join(diw_pkg , 'launch', 'mavros.launch.py')))
+                os.path.join(unico_pack , 'launch', 'mavros.launch.py')))
 
     return LaunchDescription([
         mavros,
@@ -18,14 +20,15 @@ def generate_launch_description():
             actions = [
                 Node(
                     package='unico_pack',
-                    executable='main.py',
+                    executable='process_manager.py',
                     output='screen',
                     parameters=[{
-                        'home_pose_x': 16.3,
-                        'home_pose_y': 8.7,
+                        'home_pose_x': 7.4,
+                        'home_pose_y': -16.3,
                         'rosbag_folder_path': '/home/uni_co/rosbag',
                         'mqtt_broker': 'broker.emqx.io',
                         "use_sim_time": True,
+                        'nas_mount_path': '/home/uni_co/nas_rosbag'
                     }]
                 )
             ]
@@ -37,7 +40,10 @@ def generate_launch_description():
         actions = [
             Node(
             package='unico_pack',
-            executable='mission_dispatcher_v4.py',
+            executable='mission_dispatcher.py',
+            parameters=[{
+                'tracking_mode': True,
+            }],
             output='screen',
             )]
         ),
@@ -53,7 +59,18 @@ def generate_launch_description():
             Node(
                 package='unico_pack',
                 executable='velocity_controller',
-            )
+            ),
+            Node(
+                package='unico_pack',
+                executable='precision_landing_lifecycle',
+                parameters=[{
+                    'use_sim_time': True
+                }]
+            ),
+            Node(
+                package='unico_pack',
+                executable='rosbag_lifecycle',
+            ),
             ]
         ),
     ])

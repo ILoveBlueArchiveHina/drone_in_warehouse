@@ -188,34 +188,34 @@
     <!-- ArUco Markers -->
     <include>
       <uri>
-        model://ArUcoMarkers/ArUcoMarker_0.sdf
+        model://ArUcoMarkers/ArUcoMarker_10.sdf
       </uri>
-      <name>ArUcoMarker_0</name>
+      <name>ArUcoMarker_10</name>
       <pose>-0.2 -19.8 0.011 0 0 1.5708</pose>
     </include>
 
     <include>
       <uri>
-        model://ArUcoMarkers/ArUcoMarker_1.sdf
+        model://ArUcoMarkers/ArUcoMarker_20.sdf
       </uri>
-      <name>ArUcoMarker_1</name>
+      <name>ArUcoMarker_20</name>
       <pose>0.2 -19.8 0.011 0 0 1.5708</pose>
     </include>
 
     <include>
       <uri>
-        model://ArUcoMarkers/ArUcoMarker_2.sdf
+        model://ArUcoMarkers/ArUcoMarker_30.sdf
       </uri>
-      <name>ArUcoMarker_2</name>
+      <name>ArUcoMarker_30</name>
       <pose>-0.2 -20.2 0.011 0 0 1.5708</pose>
     </include>
 
     <include>
       <uri>
-        model://ArUcoMarkers/ArUcoMarker_3.sdf
+        model://ArUcoMarkers/ArUcoMarker_440.sdf
       </uri>
-      <name>ArUcoMarker_3</name>
-      <pose>0.2 -20.2 0.011 0 0 1.5708</pose>
+      <name>ArUcoMarker_40</name>
+      <pose>0.2 -20.2 0.011 0 0 0</pose>
     </include>
     
     <include>
@@ -248,21 +248,21 @@
 
     <!-- aa -->
 
-    <model name='box_0'>
-      <pose>0 0 1.5 0 0 0</pose>
+    <model name='box_01'>
+      <pose>0 0 0.5 0 0 0</pose>
       <static>true</static>
       <link name='link'>
         <collision name='collision'>
           <geometry>
             <box>
-              <size>3 3 3</size>
+              <size>1 1 1</size>
             </box>
           </geometry>
         </collision>
         <visual name='visual'>
           <geometry>
             <box>
-              <size>3 3 3</size>
+              <size>1 1 1</size>
             </box>
           </geometry>
           <material>
@@ -272,6 +272,14 @@
         </visual>
       </link>
     </model>
+
+    <include>
+      <uri>
+        https://fuel.ignitionrobotics.org/1.0/MovAi/models/pallet_box_mobile
+      </uri>
+      <name>pallet_box_mobile_a18</name>
+      <pose>0.2 0.1 1.5 0 0 2.3</pose>
+    </include>
     
     <!-- 2m box -->
 

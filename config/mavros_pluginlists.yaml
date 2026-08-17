@@ -64,6 +64,9 @@
       - vision_speed
       - waypoint
       - wind_estimation
+      - odometry
+      - mocap_pose_estimate
+      - imu
 
     # plugin_allowlist:
       # - 'sys_**'
