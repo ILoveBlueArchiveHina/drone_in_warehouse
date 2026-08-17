@@ -250,23 +250,6 @@
     </collision>
   </link>
 
-  <link name="camera">
-    <visual>
-      <origin xyz="0 0 0" rpy="0 0 0"/>
-      <geometry>
-        <cylinder radius="0.01" length="0.01"/>
-      </geometry>
-      <material name="sensor_material">
-        <color rgba="0.0 0.4 0.8 0.9"/>
-      </material>
-    </visual>
-    <collision>
-      <origin xyz="0 0 0" rpy="0 0 0"/>
-      <geometry>
-        <cylinder radius="0.01" length="0.01"/>
-      </geometry>
-    </collision>
-  </link>
 
     <!-- imu感測器關節 -->
   <joint name="imu_joint" type="fixed">
@@ -280,13 +263,6 @@
     <parent link="body"/>
     <child link="lidar"/>
     <origin xyz="0 0 0.1" rpy="0 0 0"/>
-  </joint>
-
-  <!-- camera關節 -->
-  <joint name="camera_joint" type="fixed">
-    <parent link="body"/>
-    <child link="camera"/>
-    <origin xyz="0 0 -0.05" rpy="0 1.5708 0"/>
   </joint>
 
   <!-- Materials -->
