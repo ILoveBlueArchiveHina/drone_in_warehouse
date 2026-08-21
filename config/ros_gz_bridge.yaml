@@ -53,11 +53,14 @@
   direction: GZ_TO_ROS
 
 # 降落相機影像 Gazebo --> ROS
+# lazy: true -> 沒有 ROS 端訂閱者時不訂閱 gz topic，Gazebo 就不會渲染這顆相機。
+# WSL2 用 llvmpipe 軟體渲染，1280x720@10Hz 這顆約吃掉 1.5 顆 CPU，是 RTF 掉到 0.6 的主因。
 - ros_topic_name: "landing_camera/image_raw"
   gz_topic_name: "/landing_cam"
   ros_type_name: "sensor_msgs/msg/Image"
   gz_type_name: "ignition.msgs.Image"
   direction: GZ_TO_ROS
+  lazy: true
   # ros:
   #   frame_id: "camera_link"
 
@@ -67,6 +70,7 @@
   ros_type_name: "sensor_msgs/msg/CameraInfo"
   gz_type_name: "ignition.msgs.CameraInfo"
   direction: GZ_TO_ROS
+  lazy: true
   # ros:
   #   frame_id: "camera_link"
 
@@ -76,12 +80,14 @@
   ros_type_name: "sensor_msgs/msg/Image"
   gz_type_name: "ignition.msgs.Image"
   direction: GZ_TO_ROS
+  lazy: true
 
 # 無人機正面拍攝相機資訊
 - ros_topic_name: "/zed/zed_node/left/color/rect/camera_info"
   gz_topic_name: "zed2i/info"
   ros_type_name: "sensor_msgs/msg/CameraInfo"
   gz_type_name: "ignition.msgs.CameraInfo"
+  lazy: true
   direction: GZ_TO_ROS
     
 # 高度計數據 Gazebo --> ROS
